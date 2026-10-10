@@ -48,7 +48,7 @@ You do not need to install ChatShift from the Chrome Web Store. You can load it 
 Clone this repository or download and extract the ZIP archive to your machine:
 
 ```bash
-git clone https://github.com/<your-username>/ChatShift.git
+git clone https://github.com/vedant2048/ChatShift.git
 cd ChatShift
 ```
 
