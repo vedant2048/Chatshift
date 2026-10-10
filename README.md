@@ -11,15 +11,15 @@
 
 ## 📖 Overview
 
-**ChatShift** is a Chrome Side Panel extension built with **Manifest V3**. It solves the friction of moving between different Large Language Models (LLMs). When you start a brainstorm or debugging session in one AI and want to continue, compare, or double-check with another AI, you no longer need to copy and paste back and forth manually.
+**ChatShift** is a Chrome Side Panel extension built with **Manifest V3**. It eliminates the friction of moving conversations between different Large Language Models (LLMs). When you start a brainstorm, coding session, or debugging flow in one AI and want to continue, compare, or double-check with another AI, you no longer need to manually copy and paste snippets back and forth.
 
-ChatShift automatically captures the entire thread context (user prompts, AI responses, code snippets, lists, and tables), formats it cleanly, and transfers it into another LLM tab or exports it locally.
+ChatShift automatically extracts the entire thread context (user prompts, AI responses, code blocks, lists, and tables), formats it cleanly, and transfers it directly into another LLM tab or exports it locally.
 
 ### ✨ Key Features
 
-- **⚡ Instant Auto-Detection**: Automatically detects open conversation threads on supported AI web platforms.
+- **⚡ Instant Auto-Detection**: Automatically detects active conversation threads on supported AI web platforms.
 - **🔄 1-Click LLM Transfer**: Opens destination platform (ChatGPT, Claude, Gemini, Perplexity) with context pre-inserted into the message input.
-- **🛡️ Safe Pre-Fill (No Auto-Send)**: Context is placed into the composer for your review before sending. You stay in control.
+- **🛡️ Safe Pre-Fill (No Auto-Send)**: Context is placed into the composer for your review before sending. You stay in complete control.
 - **📋 Dual Export Formats**:
   - **Clean Markdown (`TXT`)**: Beautiful, human-readable dialogue transcripts with role headers and fenced code blocks.
   - **Structured JSON (`JSON`)**: Structured object array containing roles, timestamps, message metadata, and source URLs.
@@ -40,126 +40,119 @@ ChatShift automatically captures the entire thread context (user prompts, AI res
 
 ---
 
-## 🛠️ Developer Method: How to Install & Load the Extension
+## 🛠️ Installation & Setup (Developer Method)
 
-You do not need to download this from the Chrome Web Store to run or develop it. You can load it directly into Google Chrome (or any Chromium browser like Microsoft Edge, Brave, Opera, or Arc) using **Developer Mode**.
+You do not need to install ChatShift from the Chrome Web Store. You can load it directly into Google Chrome (or any Chromium browser like Microsoft Edge, Brave, Opera, or Arc) using **Developer Mode** in just a few steps.
 
-### Step 1: Locate the Extension Folder
-Ensure you have the extension files on your computer. The folder containing [`manifest.json`](file:///d:/Code/Chrome%20Extensions/Chatshift/manifest.json) is:
-```text
-d:\Code\Chrome Extensions\Chatshift
+### Step 1: Get the Code
+Clone this repository or download and extract the ZIP archive to your machine:
+
+```bash
+git clone https://github.com/<your-username>/ChatShift.git
+cd ChatShift
 ```
+
+*(Ensure the folder you are targeting contains the [`manifest.json`](./manifest.json) file).*
 
 ### Step 2: Open Extensions Management in Chrome
 1. Launch **Google Chrome**.
-2. In the address bar, type:
+2. In the address bar, navigate to:
    ```text
    chrome://extensions
    ```
-   *(For Microsoft Edge, use `edge://extensions`; for Brave, use `brave://extensions`)*
+   *(For Microsoft Edge, go to `edge://extensions`; for Brave, go to `brave://extensions`)*
 3. Press **Enter**.
 
 ### Step 3: Enable Developer Mode
-In the top-right corner of the Extensions page, find the **Developer mode** toggle switch and turn it **ON**:
+In the top-right corner of the Extensions page, toggle the **Developer mode** switch to **ON**:
 
 ```text
 [ Developer mode ]  ⚪ ──▶ 🟢 (ON)
 ```
 
-Once enabled, three buttons will appear in the top-left toolbar:
-- **Load unpacked**
-- **Pack extension**
-- **Update**
+Once enabled, a secondary toolbar appears with buttons for **Load unpacked**, **Pack extension**, and **Update**.
 
-### Step 4: Click "Load unpacked"
-1. Click the **Load unpacked** button.
-2. In the folder picker dialog that opens, navigate to and select the **`Chatshift`** folder:
-   ```text
-   d:\Code\Chrome Extensions\Chatshift
-   ```
-   *(Make sure to select the folder that directly contains `manifest.json`, not a parent directory.)*
+### Step 4: Load the Unpacked Extension
+1. Click the **Load unpacked** button in the top-left corner.
+2. In the folder picker dialog, select the project directory (the folder containing [`manifest.json`](./manifest.json)).
 3. Click **Select Folder**.
 
-### Step 5: Verify the Extension is Active
-You will now see the **ChatShift** card in your extensions list:
+### Step 5: Verify Extension is Loaded
+You will now see the **ChatShift** card in your list of installed extensions:
 - **Name**: ChatShift
-- **Version**: 1.0 (or current version)
-- **ID**: An auto-generated 32-character string
-- **Errors**: Should be blank (no error button)
+- **Version**: 1.0
+- **Status**: Enabled
 
-### Step 6: Pin the Extension to Chrome Toolbar
-1. Click the puzzle icon (🧩 **Extensions**) in the top-right of your Chrome window.
+### Step 6: Pin the Extension for Quick Access
+1. Click the puzzle piece icon (🧩 **Extensions**) in Chrome's top-right toolbar.
 2. Find **ChatShift** in the list.
-3. Click the pin icon (📌) to pin it next to the address bar for easy one-click access.
+3. Click the pin icon (📌) to pin it to your toolbar.
 
 ---
 
 ## 🚀 How to Use ChatShift
 
-### 1. Open an AI Chat
-Navigate to any supported platform and open an existing conversation or start a new one:
+### 1. Open an AI Conversation
+Navigate to any supported platform and open an existing thread or start a new chat:
 - [ChatGPT](https://chatgpt.com)
 - [Claude](https://claude.ai)
 - [Gemini](https://gemini.google.com)
 - [Perplexity](https://perplexity.ai)
 
 ### 2. Open the ChatShift Side Panel
-- Click the pinned **ChatShift icon** in your Chrome toolbar.
-- The **Chrome Side Panel** opens on the right side of your browser alongside your chat.
-- Alternatively, open Chrome's Side Panel icon (next to extensions) and switch the dropdown menu to **ChatShift**.
+- Click the pinned **ChatShift icon** in your browser toolbar.
+- The **Chrome Side Panel** opens docked to the right of your browser window next to your chat.
+- *(Alternatively, open Chrome's Side Panel icon and select **ChatShift** from the dropdown).*
 
 ### 3. Review Detected Conversation
-ChatShift will immediately inspect the active tab and show:
-- Source badge (e.g. `CHATGPT`, `CLAUDE`, `GEMINI`, or `PERPLEXITY`).
+ChatShift automatically analyzes the active tab and presents:
+- Active platform badge (e.g. `CHATGPT`, `CLAUDE`, `GEMINI`, or `PERPLEXITY`).
 - Conversation title and total turn count.
 - Size estimate in kilobytes.
 
 ### 4. Choose Your Export Format
-Select your preferred export layout via the format tabs:
-- **TXT / Markdown**: Formatted conversation transcript with clear `User` and `Assistant` headers and markdown code blocks.
-- **JSON**: Pure structured data containing turn indices, timestamps, roles, and message content.
+Select your format via the tabs:
+- **TXT / Markdown**: Formatted transcript with clear `User` and `Assistant` roles and formatted code snippets.
+- **JSON**: Pure structured data containing turn indices, timestamps, roles, and message objects.
 
 ### 5. Take Action
-Choose what you want to do with the conversation:
 
 #### Option A: Transfer to Another LLM (Primary Workflow)
 1. Click **Transfer Context**.
 2. Select your destination platform (**ChatGPT**, **Claude**, **Gemini**, or **Perplexity**).
 3. ChatShift will:
    - Open the target platform in a new tab.
-   - Wait for the page and message composer to load.
-   - Inject the conversation context directly into the chat prompt box with an instruction banner:
-     > *"Below is the prior conversation history from [Platform]. Please use it as context to continue our discussion:"*
-4. **Review and Send**: Inspect the pre-filled text in the input box, add any extra instructions, and press **Enter**!
+   - Wait for the message composer to load.
+   - Safely inject the prior conversation history into the input prompt with a contextual introductory header.
+4. **Review and Send**: Inspect the pre-filled text in the input box, add any specific prompt or follow-up question, and press **Enter**!
 
 #### Option B: Copy to Clipboard
-- Click **Copy Context** to copy the formatted transcript to your system clipboard for pasting into text editors, Slack, Discord, or documentation.
+- Click **Copy Context** to copy the formatted transcript to your system clipboard for pasting into docs, IDEs, Slack, or notes.
 
 #### Option C: Download File
-- Click the download icon button to download the conversation file (`.txt` or `.json`) directly to your machine's `Downloads` directory.
+- Click the download icon to save the conversation file (`.txt` or `.json`) directly to your machine's default Downloads folder.
 
 ---
 
 ## 🔄 Making Changes & Reloading (Developer Workflow)
 
-When you modify the code in the extension, Chrome does not always reload all components automatically. Follow this workflow:
+When developing or modifying the extension, use the following reload steps:
 
-### When Modifying Extension Code
-| File Changed | How to Reload in Chrome |
+| File Changed | How to Reload |
 | :--- | :--- |
 | **`manifest.json`** | Go to `chrome://extensions` and click the **Reload (🔄)** icon on the ChatShift card. |
 | **`src/background/*`** | Go to `chrome://extensions` and click the **Reload (🔄)** icon. |
-| **`src/sidepanel/*`** | Close and reopen the Side Panel, or right-click inside the Side Panel and choose **Inspect**, then press `Ctrl+R` / `F5`. |
-| **`src/content/*` or `src/extractors/*`** | Reload the extension card on `chrome://extensions`, then **refresh (`F5`) the active AI webpage tab**. |
+| **`src/sidepanel/*`** | Close and reopen the Side Panel, or right-click inside the panel > **Inspect** > press `Ctrl+R` / `F5`. |
+| **`src/content/*` or `src/extractors/*`** | Reload the extension in `chrome://extensions`, then **refresh (`F5`) the active AI chat webpage**. |
 
 ### Debugging & Inspecting Logs
-- **Background Service Worker**: Go to `chrome://extensions`, find ChatShift, and click the blue link next to **Inspect views: `service worker`**. This opens Chrome DevTools for background tasks and messages.
-- **Side Panel UI**: Right-click anywhere inside the ChatShift Side Panel and click **Inspect** to debug HTML, CSS, and `app.js` console output.
-- **Content Scripts & Extractors**: Open DevTools (`F12`) on the target AI web page (e.g. `chatgpt.com`), and check the Console tab for injector or extractor logs.
+- **Background Service Worker**: Go to `chrome://extensions`, find ChatShift, and click the blue link next to **Inspect views: `service worker`**.
+- **Side Panel UI**: Right-click anywhere inside the ChatShift Side Panel and select **Inspect**.
+- **Content Scripts & Extractors**: Open DevTools (`F12`) on the target AI web page (e.g. `chatgpt.com`), and check the **Console** tab.
 
 ---
 
-## 📂 Project Architecture
+## 📂 Project Structure
 
 ```text
 Chatshift/
@@ -199,13 +192,13 @@ Chatshift/
 
 ## 🔐 Permissions Explanation
 
-Every permission in [`manifest.json`](file:///d:/Code/Chrome%20Extensions/Chatshift/manifest.json) is scoped strictly to support the transfer utility:
+Every permission in [`manifest.json`](./manifest.json) is scoped strictly to support the transfer utility:
 
 | Permission | Purpose |
 | :--- | :--- |
 | `sidePanel` | Displays the extension UI inside Chrome's native Side Panel beside AI tabs. |
 | `scripting` | Executes platform extractors on the active AI chat page to read messages. |
-| `tabs` | Identifies active AI tabs and opens the destination AI tab during transfer. |
+| `tabs` | Identifies active AI tabs and coordinates opening destination AI tabs during transfer. |
 | `downloads` | Saves conversations as local `.txt` or `.json` files to your Downloads folder. |
 | `clipboardRead` / `clipboardWrite` | Enables copying formatted conversation context to your system clipboard. |
 | `storage` | Safely stores temporary payloads passed from the source tab to the destination tab. |
@@ -218,11 +211,11 @@ Every permission in [`manifest.json`](file:///d:/Code/Chrome%20Extensions/Chatsh
 ### Q: Why does it say "Source Not Supported"?
 Make sure your active browser tab is on one of the supported websites (`chatgpt.com`, `claude.ai`, `gemini.google.com`, or `perplexity.ai`) and that an actual conversation thread is open.
 
-### Q: Will ChatShift automatically send the message on the new AI platform?
-**No.** ChatShift fills the message composer with the context transcript, but it intentionally does **not** simulate an "Enter" press. This gives you the opportunity to review, amend, or attach additional questions before submitting.
+### Q: Will ChatShift automatically send the message on the destination platform?
+**No.** ChatShift fills the message composer with the context transcript, but it intentionally does **not** simulate an "Enter" press. This gives you the opportunity to review, amend, or attach additional instructions before submitting.
 
 ### Q: Does ChatShift store or transmit my conversations to external servers?
-**No.** All extraction, formatting, and transfer operations happen entirely in-memory within your local Chrome instance. No conversation data ever leaves your computer.
+**No.** All extraction, formatting, and transfer operations happen entirely in-memory within your local browser. No conversation data ever leaves your computer.
 
 ### Q: Can I use this in Brave, Edge, or Arc?
 **Yes.** Any browser based on the Chromium engine that supports Manifest V3 and Chrome extensions can load and run ChatShift using the same "Load unpacked" developer steps.
